@@ -5,10 +5,11 @@
 /vendor
 .env
 .env.backup
-/docker/mysql
+.docker/** */
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
 *.log
+
