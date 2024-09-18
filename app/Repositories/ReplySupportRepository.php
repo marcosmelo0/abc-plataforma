@@ -21,7 +21,7 @@ class ReplySupportRepository
     {
 
         $user = $this->getUserAuth();
-        dd($user);
+
         return $this->entity
                     ->create([
                         'support_id' => $data['support'],
