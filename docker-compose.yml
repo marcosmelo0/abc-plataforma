@@ -72,6 +72,19 @@ services:
         networks: 
             - laravel-eti
 
+    # phpMyAdmin
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        restart: unless-stopped
+        ports:
+            - 8181:80
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: ${DB_USERNAME}
+            PMA_PASSWORD: ${DB_PASSWORD}
+        networks:
+            - laravel-eti
+
 networks: 
     laravel-eti:
         driver: bridge
