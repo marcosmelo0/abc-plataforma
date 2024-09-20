@@ -11,11 +11,7 @@ use Tests\TestCase;
 class AuthTest extends TestCase
 {
     use UtilsTrait;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
     public function test_fail_auth()
     {
         $response = $this->postJson('/auth', []);
@@ -47,11 +43,7 @@ class AuthTest extends TestCase
     
     public function test_logout()
     {
-        $token = $this->createTokenUser();
-
-        $response = $this->postJson('/logout', [], [
-            'Authorization' => "Bearer {$token}"
-        ]);
+        $response = $this->postJson('/logout', [], $this->defaultHeaders());
 
         $response->assertStatus(200);
     }
@@ -65,11 +57,7 @@ class AuthTest extends TestCase
     
     public function test_get_me()
     {
-        $token = $this->createTokenUser();
-
-        $response = $this->getJson('/me', [
-            'Authorization' => "Bearer {$token}", 
-        ]);
+        $response = $this->getJson('/me', $this->defaultHeaders());
 
         $response->assertStatus(200);
     }
