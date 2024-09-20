@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Traits\UuidTrait;
 use App\Notifications\ResetPasswordNotification;
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,11 +17,10 @@ class User extends Authenticatable
     public $incrementing = false;
     protected $keyType = 'uuid';
 
-
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var string[]
      */
     protected $fillable = [
         'name',
@@ -31,7 +29,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
      * @var array
      */
@@ -41,7 +39,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
      * @var array
      */

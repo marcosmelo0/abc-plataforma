@@ -10,13 +10,13 @@ class View extends Model
     use HasFactory;
 
     protected $fillable = ['lesson_id', 'user_id', 'qty'];
-    
-    public function user() 
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
-    public function lesson() 
+
+    public function lesson()
     {
         return $this->belongsTo(Lesson::class);
     }

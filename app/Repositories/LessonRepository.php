@@ -43,7 +43,7 @@ class LessonRepository
         }
 
         return $user->views()->create([
-            'lessonId' => $lessonId
+            'lesson_id' => $lessonId
         ]);
     }
 }

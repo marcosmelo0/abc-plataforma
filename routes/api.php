@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\{
     LessonController,
     ModuleController,
     ReplySupportController,
-    SupportController,
+    SupportController
 };
 use App\Http\Controllers\Api\Auth\{
     AuthController,
@@ -26,6 +26,7 @@ Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest');
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest');
 
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/courses', [CourseController::class, 'index']);
     Route::get('/courses/{id}', [CourseController::class, 'show']);
@@ -34,9 +35,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/modules/{id}/lessons', [LessonController::class, 'index']);
     Route::get('/lessons/{id}', [LessonController::class, 'show']);
-    
-    Route::post('/lessons/viewed}', [LessonController::class, 'viewed']);
-    
+
+    Route::post('/lessons/viewed', [LessonController::class, 'viewed']);
+
     Route::get('/my-supports', [SupportController::class, 'mySupports']);
     Route::get('/supports', [SupportController::class, 'index']);
     Route::post('/supports', [SupportController::class, 'store']);
@@ -44,8 +45,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/replies', [ReplySupportController::class, 'createReply']);
 });
 
-
-Route::get('/', function() {
+Route::get('/', function () {
     return response()->json([
         'success' => true,
     ]);
